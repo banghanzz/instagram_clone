@@ -6,8 +6,7 @@ class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: ListView(
-      children: [
+      child: ListView(children: [
         //AppBar Profile
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -100,8 +99,103 @@ class ProfileWidget extends StatelessWidget {
             ],
           ),
         ),
-      ],
-    ));
+
+        //Profile Desc
+        SizedBox(
+          height: 12,
+        ),
+        Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                Text(
+                  "The Name of the author",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+              ],
+            )),
+        SizedBox(
+          height: 4,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: RichText(
+            text: TextSpan(
+                text:
+                    "Lorem ipsum dolor sit amet, consectetur adip proident dolor sit amet ",
+                style: TextStyle(color: Colors.grey[700]),
+                children: [
+                  TextSpan(
+                    text: "#hastag",
+                    style: TextStyle(color: Colors.blueAccent[700]),
+                  ),
+                ]),
+          ),
+        ),
+        SizedBox(
+          height: 4,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            "Link to my portofolio",
+            style: TextStyle(
+              color: Colors.blueAccent[700],
+            ),
+          ),
+        ),
+
+        //Stories
+        SizedBox(
+          height: 12,
+        ),
+        Container(
+            height: 100,
+            child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                scrollDirection: Axis.horizontal,
+                itemCount: 16,
+                itemBuilder: (context, index) => Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.only(right: 6),
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Container(
+                                  width: 75,
+                                  height: 75,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                ),
+                                Container(
+                                  width: 72,
+                                  height: 72,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey[700],
+                                      borderRadius: BorderRadius.circular(50),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          "https://picsum.photos/id/${index + 544}/500/500",
+                                        ),
+                                      ),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 2,
+                                      )),
+                                ),
+                              ],
+                            )),
+                        Text("Story ${index + 1}"),
+                      ],
+                    ))),
+      ]),
+    );
   }
 }
 
