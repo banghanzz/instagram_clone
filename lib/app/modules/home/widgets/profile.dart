@@ -146,6 +146,16 @@ class ProfileWidget extends StatelessWidget {
           ),
         ),
 
+        //Button Edit Profile
+        SizedBox(height: 12),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: OutlinedButton(
+            onPressed: () {},
+            child: Text("Edit Profile"),
+          ),
+        ),
+
         //Stories
         SizedBox(
           height: 12,
