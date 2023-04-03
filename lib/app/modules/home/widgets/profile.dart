@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatelessWidget {
@@ -14,11 +16,12 @@ class ProfileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     "username",
                     style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                   ),
@@ -204,6 +207,62 @@ class ProfileWidget extends StatelessWidget {
                         Text("Story ${index + 1}"),
                       ],
                     ))),
+
+        //Tabbing
+        SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Stack(alignment: Alignment.bottomCenter, children: [
+                Container(
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.grid_on),
+                  ),
+                ),
+                Container(
+                  height: 1,
+                  color: Colors.black,
+                ),
+              ]),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.video_collection_outlined),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.person_pin_outlined),
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        //Posts GridView
+        SizedBox(height: 2),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 2,
+            crossAxisSpacing: 2,
+          ),
+          itemCount: 43,
+          itemBuilder: (context, index) => Image.network(
+            "https://picsum.photos/id/${2 + index}/500/500",
+          ),
+        ),
       ]),
     );
   }
@@ -226,7 +285,7 @@ class ProfileInfo extends StatelessWidget {
         Text(
           total,
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
